@@ -8,6 +8,7 @@
 alias ls='ls -l --color=auto'
 alias lsa='ls -lA --color=auto'
 alias grep='grep --color=auto'
+alias clear='clear && bible -r'
 
 PS1='\[\e[38;5;45m\]\u\[\e[0m\]  \[\e[38;5;202m\]\w\[\e[0m\]: '
 

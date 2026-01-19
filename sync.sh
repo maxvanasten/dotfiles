@@ -24,3 +24,11 @@ mv ~/.bashrc ~/.bashrc.backup
 
 echo "Copying .bashrc -> ~/.bashrc"
 cp bashrc ~/.bashrc
+
+echo "-= [HYPRLAND] =-"
+
+echo "Backing up ~/.config/hypr/bindings.conf -> ~/.config/hypr/bindings.conf.backup"
+mv ~/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf.backup
+
+echo "Copying config/hypr/bindings.conf -> ~/.config/hypr/bindings.conf"
+cp ./config/hypr/bindings.conf ~/.config/hypr/bindings.conf 

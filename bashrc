@@ -10,7 +10,7 @@ alias refresh='printf "\n" && bible -r && printf "\n"'
 alias ls='ls -l --color=auto'
 alias lsa='ls -lA --color=auto'
 alias grep='grep --color=auto'
-alias clear='clear && refresh'
+# alias clear='clear && refresh'
 
 PS1='\[\e[38;5;45m\]\u\[\e[0m\] | \[\e[38;5;202m\]\w\[\e[0m\]: '
 

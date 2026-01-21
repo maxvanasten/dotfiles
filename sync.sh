@@ -1,13 +1,13 @@
-#echo "-= [NEOVIM] =-"
+echo "-= [NEOVIM] =-"
 
-#echo "Backing up ~/.config/nvim -> ~/.config/nvim_backup"
-#rm -rf ~/.config/nvim_backup
-#mkdir ~/.config/nvim_backup
-#mv ~/.config/nvim/* ~/.config/nvim_backup/
+echo "Backing up ~/.config/nvim -> ~/.config/nvim_backup"
+rm -rf ~/.config/nvim_backup
+mkdir ~/.config/nvim_backup
+mv ~/.config/nvim/* ~/.config/nvim_backup/
 
-#echo "Copying .config/nvim/* -> ~/.config/nvim/"
-#mkdir ~/.config/nvim
-#cp -r config/nvim/* ~/.config/nvim
+echo "Copying .config/nvim/* -> ~/.config/nvim/"
+mkdir ~/.config/nvim
+cp -r config/nvim/* ~/.config/nvim
 
 echo "-= [TMUX] =-"
 

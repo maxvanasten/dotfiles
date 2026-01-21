@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias refresh='printf "\n" && bible -r && printf "\n"'
+alias refresh='bible -r && printf "\n"'
 
 alias ls='ls -l --color=auto'
 alias lsa='ls -lA --color=auto'

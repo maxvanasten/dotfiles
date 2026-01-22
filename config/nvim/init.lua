@@ -22,7 +22,7 @@ vim.cmd("highlight Normal ctermbg=none guibg=none")
 vim.cmd("highlight SignColumn ctermbg=none guibg=none")
 vim.cmd("highlight LineNr ctermbg=none guibg=none")
 
-vim.lsp.enable({ 'lua_ls', 'ts_ls','html' })
+vim.lsp.enable({ 'lua_ls', 'ts_ls','html', 'gopls' })
 require('harpoon').setup()
 require('lualine').setup({
 	options = {

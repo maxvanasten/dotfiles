@@ -23,6 +23,13 @@ vim.cmd("highlight SignColumn ctermbg=none guibg=none")
 vim.cmd("highlight LineNr ctermbg=none guibg=none")
 
 vim.lsp.enable({ 'lua_ls', 'ts_ls','html', 'gopls' })
+vim.opt.completeopt = 'menu,menuone,noinsert'
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    vim.lsp.completion.enable(true, args.data.client_id, args.buf, {autotrigger = true})
+  end,
+})
+
 require('harpoon').setup()
 require('lualine').setup({
 	options = {
@@ -55,5 +62,6 @@ vim.keymap.set('n', '<C-k>', '<C-u>zz')
 vim.keymap.set('i', '<A-j>', '<C-n>')
 vim.keymap.set('i', '<A-k>', '<C-p>')
 vim.keymap.set('i', '<A-i>', '<C-y>')
+vim.keymap.set('i', '<A-Space>', vim.lsp.completion.get, {desc = 'LSP completion'})
 
 vim.keymap.set('i', 'jj', '<Esc>')

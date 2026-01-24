@@ -5,4 +5,4 @@ These dotfiles assume: Arch Linux with an internet connection and sudo access.
 
 ## Quick install:
 
-`curl -s https://github.com/maxvanasten/dotfiles/install.sh | bash`
+`curl -s https://raw.githubusercontent.com/maxvanasten/dotfiles/refs/heads/main/install.sh | bash`

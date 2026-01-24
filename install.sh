@@ -6,7 +6,7 @@ sudo pacman -S --needed git base-devel
 mkdir ~/yay
 git clone https://aur.archlinux.org/yay-bin.git ~/yay
 cd ~/yay
-makepkg -si
+makepkg -si --no-confirm
 rm -rf ~/yay
 # Install dependencies
 yay -S nodejs npm fastfetch neovim-nightly-bin

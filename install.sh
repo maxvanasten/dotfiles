@@ -6,10 +6,10 @@ sudo pacman -S --needed git base-devel
 mkdir ~/yay
 git clone https://aur.archlinux.org/yay-bin.git ~/yay
 cd ~/yay
-makepkg -si --no-confirm
+makepkg -si --noconfirm
 rm -rf ~/yay
 # Install dependencies
-yay -S nodejs npm fastfetch neovim-nightly-bin
+yay -S --noconfirm nodejs npm fastfetch neovim-nightly-bin
 # Install random_quote
 git clone https://github.com/maxvanasten/random_quote ~/random_quote
 cd ~/random_quote

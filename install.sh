@@ -15,3 +15,10 @@ git clone https://github.com/maxvanasten/random_quote ~/random_quote
 cd ~/random_quote
 go build cmd/main.go
 sudo mv main /usr/bin/random_quote
+rm -rf ~/random_quote
+
+# Get dotfiles
+git clone https://github.com/maxvanasten/dotfiles ~/dotfiles
+cd ~/dotfiles
+bash sync.sh
+rm -rf ~/dotfiles

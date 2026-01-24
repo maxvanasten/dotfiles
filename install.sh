@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 # Install yay package manager
-sudo pacman -S --needed git base-devel
+sudo pacman -S --needed --noconfirm git base-devel
 mkdir ~/yay
 git clone https://aur.archlinux.org/yay-bin.git ~/yay
 cd ~/yay

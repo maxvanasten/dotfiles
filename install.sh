@@ -6,9 +6,7 @@ git clone https://aur.archlinux.org/yay-bin.git ~/yay
 cd ~/yay
 makepkg -si
 rm -rf ~/yay
-# Install nodejs and npm
-yay -S nodejs npm
+# Install dependencies
+yay -S nodejs npm fastfetch neovim-nightly-bin
 # Install bibletui
 sudo npm install -g bibletui
-# Install neovim
-yay -S neovim-nightly-bin

@@ -7,8 +7,8 @@
 
 alias refresh='bible -r && printf "\n"'
 
-alias ls='ls -l --color=auto'
-alias lsa='ls -lA --color=auto'
+alias ls='ls -A --color=auto'
+alias lsa='ls -1shA --color=auto'
 alias grep='grep --color=auto'
 # alias clear='clear && refresh'
 

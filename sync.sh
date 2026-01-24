@@ -32,3 +32,8 @@ mv ~/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf.backup
 
 echo "Copying config/hypr/bindings.conf -> ~/.config/hypr/bindings.conf"
 cp ./config/hypr/bindings.conf ~/.config/hypr/bindings.conf 
+
+echo "-= [Quotes] =-"
+
+echo "Copying config/quotes.txt -> ~/.config/quotes.txt"
+cp ./config/quotes.txt ~/.config/quotes.txt

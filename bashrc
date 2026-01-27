@@ -14,6 +14,8 @@ alias ff='fastfetch -l none'
 alias clear='clear && refresh'
 alias cls='clear && ls && printf "\n"'
 
+alias gd='git diff | nvim'
+
 PS1='\[\e[38;5;45m\]\u\[\e[0m\] \[\e[38;5;202m\]\w\[\e[0m\] => '
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then

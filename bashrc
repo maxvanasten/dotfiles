@@ -7,8 +7,8 @@
 
 alias refresh='random_quote ~/.config/quotes.txt && printf "\n"'
 
-alias ls='ls -A --color=auto'
-alias lsa='ls -1shA --color=auto'
+alias ls='ls -A --color=auto --group-directories-first'
+alias lsa='ls -1shA --color=auto --group-directories-first'
 alias grep='grep --color=auto'
 alias ff='fastfetch -l none'
 alias clear='clear && refresh'

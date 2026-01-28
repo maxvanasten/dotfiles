@@ -63,7 +63,13 @@ vim.lsp.config['gopls'] = {
 	filetypes = { 'go', 'gomod', 'gowork' },
 }
 
-vim.lsp.enable({ 'lua_ls', 'ts_ls', 'denols', 'html', 'gopls' })
+vim.lsp.config['arduino'] = {
+	cmd = { 'arduino-language-server' },
+	filetypes = { 'arduino' },
+	root_markers = { '.vscode', '*.ino' },
+}
+
+vim.lsp.enable({ 'lua_ls', 'ts_ls', 'denols', 'html', 'gopls', 'arduino' })
 vim.opt.completeopt = 'menu,menuone,noinsert'
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
@@ -89,7 +95,7 @@ require('lualine').setup({
 	}
 })
 require('nvim-treesitter').setup({
-	ensure_installed = { "javascript", "typescript", "javascriptreact", "typescriptreact", "lua" },
+	ensure_installed = { "javascript", "typescript", "javascriptreact", "typescriptreact", "lua", "arduino" },
 	highlight = {
 		enable = true
 	}

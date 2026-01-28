@@ -33,6 +33,12 @@ mv ~/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf.backup
 echo "Copying config/hypr/bindings.conf -> ~/.config/hypr/bindings.conf"
 cp ./config/hypr/bindings.conf ~/.config/hypr/bindings.conf 
 
+echo "Backing up ~/.config/hypr/looknfeel.conf -> ~/.config/hypr/looknfeel.conf.backup"
+mv ~/.config/hypr/looknfeel.conf ~/.config/hypr/looknfeel.conf.backup
+
+echo "Copying config/hypr/looknfeel.conf -> ~/.config/hypr/looknfeel.conf"
+cp ./config/hypr/looknfeel.conf ~/.config/hypr/looknfeel.conf
+
 echo "-= [Quotes] =-"
 
 echo "Copying config/quotes.txt -> ~/.config/quotes.txt"

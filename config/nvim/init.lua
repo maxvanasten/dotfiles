@@ -71,6 +71,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+-- Enable inlay hints for TypeScript
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client.name == 'ts_ls' then
+      vim.lsp.buf.inlay_hint(0, true)  -- Enable inlay hints
+    end
+  end,
+})
+
+-- Toggle inlay hints with a keybinding
+vim.keymap.set('n', '<leader>ih', function()
+  vim.lsp.buf.inlay_hint(0, nil)  -- Toggle
+end, { desc = 'Toggle inlay hints' })
+
 -- Configure hover window appearance
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
   vim.lsp.handlers.hover,

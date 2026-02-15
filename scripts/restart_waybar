@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+pid=$(pidof waybar)
+kill $pid
+nohup waybar >/dev/null 2>&1 &
+exit

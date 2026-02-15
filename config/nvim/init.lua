@@ -17,6 +17,8 @@ vim.pack.add {
 	{ src = 'https://github.com/kdheepak/lazygit.nvim' }
 }
 
+vim.cmd.packadd('nvim-treesitter')
+
 vim.cmd("colorscheme tokyonight")
 vim.cmd("highlight Normal ctermbg=none guibg=none")
 vim.cmd("highlight SignColumn ctermbg=none guibg=none")
@@ -75,16 +77,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client and client.name == 'ts_ls' then
-      vim.lsp.buf.inlay_hint(0, true)  -- Enable inlay hints
+    if client and (client.name == 'denols' or client.name == 'ts_ls') then
+      vim.lsp.inlay_hint.enable(true)  -- Enable inlay hints
     end
   end,
 })
-
--- Toggle inlay hints with a keybinding
-vim.keymap.set('n', '<leader>ih', function()
-  vim.lsp.buf.inlay_hint(0, nil)  -- Toggle
-end, { desc = 'Toggle inlay hints' })
 
 -- Configure hover window appearance
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
@@ -103,11 +100,11 @@ require('lualine').setup({
 		theme = 'horizon'
 	}
 })
-require('nvim-treesitter').setup({
-	ensure_installed = { "javascript", "typescript", "javascriptreact", "typescriptreact", "lua" },
-	highlight = {
-		enable = true
-	}
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'lua', 'go' },
+  callback = function()
+    vim.treesitter.start()
+  end,
 })
 
 vim.g.mapleader = " "
@@ -132,6 +129,11 @@ vim.keymap.set('i', '<A-k>', '<C-p>')
 vim.keymap.set('i', '<A-i>', '<C-y>')
 vim.keymap.set('i', '<A-Space>', vim.lsp.completion.get, {desc = 'LSP completion'})
 vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, {desc = 'LSP signature help'})
+
+-- Toggle inlay hints with a keybinding
+vim.keymap.set('n', '<leader>th', function()
+  vim.lsp.inlay_hint.enable(nil)  -- Toggle
+end, { desc = 'Toggle inlay hints' })
 
 -- Auto-trigger signature help on '(' character
 vim.api.nvim_create_autocmd('InsertCharPre', {

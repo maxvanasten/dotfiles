@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+echo "Translating..."
+echo ""
+trans -b -j -show-original n -show-prompt-message n pt-BR:en $*

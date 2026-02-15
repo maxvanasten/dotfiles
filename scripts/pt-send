@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+echo "Translating..."
+trans -b -j -show-original n -show-prompt-message n en:pt-BR $* | wl-copy
+echo "Done, copied to clipboard!"

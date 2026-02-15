@@ -43,3 +43,8 @@ echo "-= [Quotes] =-"
 
 echo "Copying config/quotes.txt -> ~/.config/quotes.txt"
 cp ./config/quotes.txt ~/.config/quotes.txt
+
+echo "-= [Scripts] =-"
+
+echo "Copying scripts/* -> /usr/bin/"
+sudo cp ./scripts/* /usr/bin/

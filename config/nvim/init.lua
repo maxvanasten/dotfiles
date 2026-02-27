@@ -72,6 +72,26 @@ vim.lsp.config['html'] = {
 vim.lsp.config['gopls'] = {
 	cmd = { 'gopls' },
 	filetypes = { 'go', 'gomod', 'gowork' },
+
+	settings = {
+		gopls = {
+			hints          = {
+				-- Enable the kinds of hints you want (all are very useful in Go)
+				assignVariableTypes    = true,   --   x := 42      →   x := 42 /* int */
+				compositeLiteralFields = true,   --   Struct{...}  →   Struct{Field: ...}
+				compositeLiteralTypes  = true,
+				constantValues         = true,
+				functionTypeParameters = true,
+				parameterNames         = true,   --   Foo(      )  →   Foo(name string)
+				rangeVariableTypes     = true,   --   for k, v  →   for k string, v int
+			},
+
+			-- Optional: other nice gopls settings
+			semanticTokens = true,
+			staticcheck    = true,
+			gofumpt        = true, -- if you like gofumpt-style formatting
+		},
+	},
 }
 
 vim.lsp.enable({ 'lua_ls', 'ts_ls', 'denols', 'html', 'gopls' })
@@ -79,6 +99,15 @@ vim.opt.completeopt = 'menu,menuone,noinsert'
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
 		vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = true })
+	end,
+})
+-- Enable inlay hints by default in every buffer that has an LSP
+vim.api.nvim_create_autocmd('LspAttach', {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client and client:supports_method('textDocument/inlayHint') then
+			vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+		end
 	end,
 })
 
@@ -157,9 +186,8 @@ vim.keymap.set('i', '<A-i>', '<C-y>')
 vim.keymap.set('i', '<A-Space>', vim.lsp.completion.get, { desc = 'LSP completion' })
 vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, { desc = 'LSP signature help' })
 
--- Toggle inlay hints with a keybinding
-vim.keymap.set('n', '<leader>th', function()
-	vim.lsp.inlay_hint.enable(nil) -- Toggle
-end, { desc = 'Toggle inlay hints' })
+vim.keymap.set('n', '<leader>ih', function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+end, { desc = 'Toggle Inlay Hints' })
 
 vim.keymap.set('i', 'jj', '<Esc>')

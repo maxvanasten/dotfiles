@@ -9,12 +9,21 @@ vim.opt.autocomplete = true
 
 vim.pack.add {
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
-	{ src = 'https://github.com/ThePrimeagen/harpoon' },
 	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
-	{ src = 'https://github.com/nvim-lualine/lualine.nvim' },
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 	{ src = 'https://github.com/folke/tokyonight.nvim' },
-	{ src = 'https://github.com/kdheepak/lazygit.nvim' }
+
+	{ src = 'https://github.com/kdheepak/lazygit.nvim' },
+	{ src = 'https://github.com/ThePrimeagen/harpoon' },
+	{ src = 'https://github.com/dmtrKovalenko/fff.nvim' },
+	{ src = 'https://github.com/akinsho/toggleterm.nvim' },
+	{ src = 'https://github.com/folke/noice.nvim' },
+
+	{ src = 'https://github.com/nvim-lualine/lualine.nvim' },
+	{ src = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
+
+	{ src = 'https://github.com/MunifTanjim/nui.nvim' },
+	{ src = 'https://github.com/rcarriga/nvim-notify' },
 }
 
 vim.cmd.packadd('nvim-treesitter')
@@ -44,10 +53,10 @@ vim.lsp.config['denols'] = {
 			enable = true,
 			suggest = {
 				imports = {
-					hosts = { 
+					hosts = {
 						["https://deno.land"] = true,
 						["https://esm.sh"] = true,
-						["https://jsr.io"] = true 
+						["https://jsr.io"] = true
 					}
 				}
 			}
@@ -68,30 +77,20 @@ vim.lsp.config['gopls'] = {
 vim.lsp.enable({ 'lua_ls', 'ts_ls', 'denols', 'html', 'gopls' })
 vim.opt.completeopt = 'menu,menuone,noinsert'
 vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    vim.lsp.completion.enable(true, args.data.client_id, args.buf, {autotrigger = true})
-  end,
-})
-
--- Enable inlay hints for TypeScript
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client and (client.name == 'denols' or client.name == 'ts_ls') then
-      vim.lsp.inlay_hint.enable(true)  -- Enable inlay hints
-    end
-  end,
+	callback = function(args)
+		vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = true })
+	end,
 })
 
 -- Configure hover window appearance
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-  vim.lsp.handlers.hover,
-  {
-    border = 'rounded',
-    max_width = 80,
-    max_height = 20,
-    focusable = false,
-  }
+	vim.lsp.handlers.hover,
+	{
+		border = 'rounded',
+		max_width = 80,
+		max_height = 20,
+		focusable = false,
+	}
 )
 
 require('harpoon').setup()
@@ -100,12 +99,38 @@ require('lualine').setup({
 		theme = 'horizon'
 	}
 })
+
+require("toggleterm").setup()
+
+require("noice").setup()
+
+require("ibl").setup()
+
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'lua', 'go' },
-  callback = function()
-    vim.treesitter.start()
-  end,
+	pattern = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'lua', 'go' },
+	callback = function()
+		vim.treesitter.start()
+	end,
 })
+
+-- fff
+vim.api.nvim_create_autocmd('PackChanged', {
+	callback = function(event)
+		if event.data.updated then
+			require('fff.download').download_or_build_binary()
+		end
+	end,
+})
+
+vim.g.fff = {
+	lazy_sync = true,
+	debug = {
+		enabled = true,
+		show_scores = true,
+	},
+}
+
+vim.keymap.set('n', 'ff', function() require('fff').find_files() end, { desc = 'FFFind files' })
 
 vim.g.mapleader = " "
 vim.keymap.set('n', '<leader>w', ':update<CR>')
@@ -119,7 +144,9 @@ vim.keymap.set('n', '<leader>x', require("harpoon.ui").toggle_quick_menu)
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>g', ':LazyGit<CR>')
-vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, {desc = 'LSP hover documentation'})
+vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, { desc = 'LSP hover documentation' })
+
+vim.keymap.set('n', '<leader>t', ':ToggleTerm direction=float<CR>')
 
 vim.keymap.set('n', '<C-j>', '<C-d>zz')
 vim.keymap.set('n', '<C-k>', '<C-u>zz')
@@ -127,23 +154,12 @@ vim.keymap.set('n', '<C-k>', '<C-u>zz')
 vim.keymap.set('i', '<A-j>', '<C-n>')
 vim.keymap.set('i', '<A-k>', '<C-p>')
 vim.keymap.set('i', '<A-i>', '<C-y>')
-vim.keymap.set('i', '<A-Space>', vim.lsp.completion.get, {desc = 'LSP completion'})
-vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, {desc = 'LSP signature help'})
+vim.keymap.set('i', '<A-Space>', vim.lsp.completion.get, { desc = 'LSP completion' })
+vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, { desc = 'LSP signature help' })
 
 -- Toggle inlay hints with a keybinding
 vim.keymap.set('n', '<leader>th', function()
-  vim.lsp.inlay_hint.enable(nil)  -- Toggle
+	vim.lsp.inlay_hint.enable(nil) -- Toggle
 end, { desc = 'Toggle inlay hints' })
-
--- Auto-trigger signature help on '(' character
-vim.api.nvim_create_autocmd('InsertCharPre', {
-  callback = function()
-    if vim.v.char == '(' and vim.lsp.get_active_clients({bufnr = 0})[1] then
-      vim.defer_fn(function()
-        vim.lsp.buf.signature_help()
-      end, 50)
-    end
-  end,
-})
 
 vim.keymap.set('i', 'jj', '<Esc>')

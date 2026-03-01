@@ -13,6 +13,9 @@ alias grep='grep --color=auto'
 alias ff='fastfetch -l none'
 alias clear='clear && refresh'
 alias cls='clear && ls && printf "\n"'
+cds() {
+  cd "$@" && cls
+}
 
 alias gd='git diff | nvim'
 

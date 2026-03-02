@@ -1,8 +1,0 @@
-# Thanks Grok
-# Remove arrow key bindings
-"\e[A":    # up arrow
-"\e[B":    # down arrow
-
-# Vim style up/down movement
-"\ej": history-search-backward
-"\ek": history-search-forward

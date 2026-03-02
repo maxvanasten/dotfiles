@@ -165,7 +165,6 @@ vim.keymap.set('n', '<leader>x', require("harpoon.ui").toggle_quick_menu)
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>g', ':LazyGit<CR>')
-vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, { desc = 'LSP hover documentation' })
 
 vim.keymap.set('n', '<leader>t', ':ToggleTerm direction=float<CR>')
 

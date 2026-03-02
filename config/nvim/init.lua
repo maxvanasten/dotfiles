@@ -106,6 +106,8 @@ vim.lsp.config['gopls'] = {
 	},
 }
 
+vim.diagnostic.config({ virtual_text = true })
+
 vim.lsp.enable({ 'lua_ls', 'ts_ls', 'denols', 'html', 'gopls', 'gsclsp' })
 vim.opt.completeopt = 'menu,menuone,noinsert'
 vim.api.nvim_create_autocmd('LspAttach', {

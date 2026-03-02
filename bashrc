@@ -14,7 +14,7 @@ alias ff='fastfetch -l none'
 alias clear='clear && refresh'
 alias cls='clear && ls && printf "\n"'
 cds() {
-  cd "$@" && cls
+  cd "$@" && ls .
 }
 
 alias gd='git diff | nvim'

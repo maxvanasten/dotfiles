@@ -83,19 +83,19 @@ vim.lsp.config['gsclsp'] = {
 
 vim.lsp.config['gopls'] = {
 	cmd = { 'gopls' },
-	filetypes = { 'go', 'gomod', 'gowork' },
+	filetypes = { 'go', 'gomod' },
 
 	settings = {
 		gopls = {
 			hints          = {
 				-- Enable the kinds of hints you want (all are very useful in Go)
-				assignVariableTypes    = true,   --   x := 42      →   x := 42 /* int */
-				compositeLiteralFields = true,   --   Struct{...}  →   Struct{Field: ...}
+				assignVariableTypes    = true, --   x := 42      →   x := 42 /* int */
+				compositeLiteralFields = true, --   Struct{...}  →   Struct{Field: ...}
 				compositeLiteralTypes  = true,
 				constantValues         = true,
 				functionTypeParameters = true,
-				parameterNames         = true,   --   Foo(      )  →   Foo(name string)
-				rangeVariableTypes     = true,   --   for k, v  →   for k string, v int
+				parameterNames         = true, --   Foo(      )  →   Foo(name string)
+				rangeVariableTypes     = true, --   for k, v  →   for k string, v int
 			},
 
 			-- Optional: other nice gopls settings
@@ -113,26 +113,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = true })
 	end,
 })
--- Enable inlay hints by default in every buffer that has an LSP
-vim.api.nvim_create_autocmd('LspAttach', {
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client and client:supports_method('textDocument/inlayHint') then
-			vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
-		end
-	end,
-})
-
--- Configure hover window appearance
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-	vim.lsp.handlers.hover,
-	{
-		border = 'rounded',
-		max_width = 80,
-		max_height = 20,
-		focusable = false,
-	}
-)
 
 require('harpoon').setup()
 require('lualine').setup({
@@ -142,9 +122,7 @@ require('lualine').setup({
 })
 
 require("toggleterm").setup()
-
 require("noice").setup()
-
 require("ibl").setup()
 
 vim.api.nvim_create_autocmd('FileType', {

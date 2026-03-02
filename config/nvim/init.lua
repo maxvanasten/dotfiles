@@ -7,6 +7,12 @@ vim.opt.shiftwidth = 2
 vim.opt.scrolloff = 10
 vim.opt.autocomplete = true
 
+vim.filetype.add({
+	extension = {
+		gsc = 'gsc',
+	},
+})
+
 vim.pack.add {
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
@@ -69,6 +75,12 @@ vim.lsp.config['html'] = {
 	filetypes = { 'html', 'htmldjango' },
 }
 
+vim.lsp.config['gsclsp'] = {
+	cmd = { 'gsclsp' },
+	filetypes = { 'gsc' },
+	single_file_support = true,
+}
+
 vim.lsp.config['gopls'] = {
 	cmd = { 'gopls' },
 	filetypes = { 'go', 'gomod', 'gowork' },
@@ -94,7 +106,7 @@ vim.lsp.config['gopls'] = {
 	},
 }
 
-vim.lsp.enable({ 'lua_ls', 'ts_ls', 'denols', 'html', 'gopls' })
+vim.lsp.enable({ 'lua_ls', 'ts_ls', 'denols', 'html', 'gopls', 'gsclsp' })
 vim.opt.completeopt = 'menu,menuone,noinsert'
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
@@ -191,3 +203,6 @@ vim.keymap.set('n', '<leader>ih', function()
 end, { desc = 'Toggle Inlay Hints' })
 
 vim.keymap.set('i', 'jj', '<Esc>')
+
+-- For debugging gsclsp
+vim.highlight.priorities.semantic_tokens = 75 -- Default treesitter is 100

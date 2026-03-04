@@ -124,7 +124,13 @@ require('lualine').setup({
 })
 
 require("toggleterm").setup()
-require("noice").setup()
+require("noice").setup({
+	lsp = {
+		hover = {
+			silent = true,
+		}
+	}
+})
 require("ibl").setup()
 
 vim.api.nvim_create_autocmd('FileType', {

@@ -9,7 +9,7 @@ cd ~/yay
 makepkg -si --noconfirm
 rm -rf ~/yay
 # Install dependencies
-yay -S --noconfirm nodejs npm fastfetch neovim-nightly-bin jq bat
+yay -S --noconfirm nodejs npm fastfetch neovim-nightly-bin jq bat go
 # Install random_quote
 cd ~
 git clone https://github.com/maxvanasten/random_quote ~/random_quote

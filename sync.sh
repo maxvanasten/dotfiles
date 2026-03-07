@@ -3,6 +3,7 @@ echo "Backing up ~/.config/nvim -> ~/.config/nvim_backup"
 rm -rf ~/.config/nvim_backup
 mkdir ~/.config/nvim_backup
 mv ~/.config/nvim/* ~/.config/nvim_backup/
+rm -rf ~/.config/nvim
 echo "Copying .config/nvim/* -> ~/.config/nvim/"
 mkdir ~/.config/nvim
 cp -r config/nvim/* ~/.config/nvim
@@ -18,12 +19,6 @@ echo "Backing up ~/.bashrc -> ~/.bashrc.backup"
 mv ~/.bashrc ~/.bashrc.backup
 echo "Copying .bashrc -> ~/.bashrc"
 cp bashrc ~/.bashrc
-
-echo "-= [.INPUTRC] =-"
-echo "Backing up ~/.inputrc -> ~/.inputrc.backup"
-mv ~/.inputrc ~/.inputrc.backup
-echo "Copying ./inputrc -> ~/.inputrc"
-cp inputrc ~/.inputrc
 
 echo "-= [HYPRLAND] =-"
 echo "Backing up ~/.config/hypr/bindings.conf -> ~/.config/hypr/bindings.conf.backup"
@@ -42,3 +37,9 @@ cp ./config/quotes.txt ~/.config/quotes.txt
 echo "-= [Scripts] =-"
 echo "Copying scripts/* -> /usr/bin/"
 sudo cp ./scripts/* /usr/bin/
+
+echo "-= [Prompts] =-"
+echo "Copying prompts/ -> ~/.prompts"
+sudo rm -rf ~/.prompts
+mkdir ~/.prompts
+sudo cp -r ./prompts/* ~/.prompts/

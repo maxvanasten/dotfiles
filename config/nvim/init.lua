@@ -116,6 +116,7 @@ vim.opt.completeopt = 'menu,menuone,noinsert'
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
 		vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = true })
+		vim.lsp.inlay_hint.enable()
 	end,
 })
 

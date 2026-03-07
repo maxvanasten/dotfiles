@@ -17,7 +17,10 @@ vim.pack.add {
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
+
 	{ src = 'https://github.com/folke/tokyonight.nvim' },
+	{ src = 'https://github.com/Mofiqul/vscode.nvim' },
+	{ src = 'https://github.com/olimorris/onedarkpro.nvim' },
 
 	{ src = 'https://github.com/kdheepak/lazygit.nvim' },
 	{ src = 'https://github.com/ThePrimeagen/harpoon' },
@@ -34,7 +37,7 @@ vim.pack.add {
 
 vim.cmd.packadd('nvim-treesitter')
 
-vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme onedark")
 vim.cmd("highlight Normal ctermbg=none guibg=none")
 vim.cmd("highlight SignColumn ctermbg=none guibg=none")
 vim.cmd("highlight LineNr ctermbg=none guibg=none")

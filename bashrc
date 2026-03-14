@@ -17,6 +17,38 @@ cds() {
   cd "$@" && ls .
 }
 
+ai_model="opencode/big-pickle"
+ai_issue_solver() {
+	prompt=$(cat ~/.prompts/repo_issues.md)
+	opencode --prompt "$prompt" -m $ai_model
+}
+ai_documentation() {
+	prompt=$(cat ~/.prompts/documentation.md)
+	opencode --prompt "$prompt" -m $ai_model
+}
+ai_readme() {
+	prompt=$(cat ~/.prompts/generate_readme.md)
+	opencode --prompt "$prompt" -m $ai_model
+}
+ai_rewrite() {
+	prompt=$(cat ~/.prompts/rewrite.md)
+	opencode --prompt "$prompt" -m $ai_model
+}
+ai_explanation() {
+	prompt=$(cat ~/.prompts/explanation.md)
+	opencode --prompt "$prompt" -m $ai_model
+}
+ai_improve() {
+	prompt=$(cat ~/.prompts/improve.md)
+	opencode --prompt "$prompt" -m $ai_model
+}
+
+connect_windows() {
+	folder=$@
+	mkdir -p /home/max/win/$folder
+	sudo mount -t cifs //192.168.2.7/$folder /home/max/win/$folder -o username=max,uid=1000,gid=1000,file_mode=0777,dir_mode=0777
+}
+
 alias gd='git diff | nvim'
 
 PS1='\[\e[38;5;45m\]\u\[\e[0m\] \[\e[38;5;202m\]\w\[\e[0m\] => '

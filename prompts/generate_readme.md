@@ -1,0 +1,1 @@
+Analyze the codebase in the current directory. You are to provide a comprehensive, detailed, accurate README.md for the github repository of this codebase. Keep it professional, informative and accurate. Make it look unqiue and stand out

@@ -1,0 +1,1 @@
+Analyze the current codebase thoroughly. Ensure that you know exactly what is going on accurately. Explain the entire codebase to me in a concise but detailed manner so that I may understand this codebase.

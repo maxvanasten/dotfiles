@@ -29,6 +29,7 @@ echo "Backing up ~/.config/hypr/looknfeel.conf -> ~/.config/hypr/looknfeel.conf.
 mv ~/.config/hypr/looknfeel.conf ~/.config/hypr/looknfeel.conf.backup
 echo "Copying config/hypr/looknfeel.conf -> ~/.config/hypr/looknfeel.conf"
 cp ./config/hypr/looknfeel.conf ~/.config/hypr/looknfeel.conf
+hyprctl reload
 
 echo "-= [Quotes] =-"
 echo "Copying config/quotes.txt -> ~/.config/quotes.txt"

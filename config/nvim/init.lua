@@ -181,6 +181,7 @@ vim.keymap.set('n', '<leader>x', function() require("buffer_manager.ui").toggle_
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
+vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename)
 vim.keymap.set('n', '<leader>g', ':LazyGit<CR>')
 
 vim.keymap.set('n', '<leader>t', ':ToggleTerm direction=float<CR>')
@@ -194,7 +195,7 @@ vim.keymap.set('i', '<A-i>', '<C-y>')
 vim.keymap.set('i', '<A-Space>', vim.lsp.completion.get, { desc = 'LSP completion' })
 vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, { desc = 'LSP signature help' })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
-
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = true })
 
 vim.keymap.set('n', '<leader>ih', function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })

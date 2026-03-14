@@ -34,6 +34,7 @@ vim.pack.add {
 
 	{ src = 'https://github.com/MunifTanjim/nui.nvim' },
 	{ src = 'https://github.com/rcarriga/nvim-notify' },
+	{ src = 'https://github.com/j-morano/buffer_manager.nvim' },
 }
 
 vim.cmd.packadd('nvim-treesitter')
@@ -137,6 +138,7 @@ require("noice").setup({
 	}
 })
 require("ibl").setup()
+require("buffer_manager").setup()
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'lua', 'go' },
@@ -170,8 +172,12 @@ vim.keymap.set('n', '<leader>q', ':q<CR>')
 vim.keymap.set('n', '<leader>s', ':source<CR>')
 
 vim.keymap.set('n', '<leader>e', ':Explore<CR>')
-vim.keymap.set('n', '<leader>a', require("harpoon.mark").add_file)
-vim.keymap.set('n', '<leader>x', require("harpoon.ui").toggle_quick_menu)
+
+-- Harpoon is broken right now
+--vim.keymap.set('n', '<leader>a', require("harpoon.mark").add_file)
+--vim.keymap.set('n', '<leader>x', require("harpoon.ui").toggle_quick_menu)
+-- Buffer manager as harpoon replacement for now
+vim.keymap.set('n', '<leader>x', function() require("buffer_manager.ui").toggle_quick_menu() end)
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)

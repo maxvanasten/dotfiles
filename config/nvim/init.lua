@@ -129,6 +129,10 @@ require('lualine').setup({
 	}
 })
 
+require("notify").setup({
+	background_colour = "#000000",
+})
+
 require("toggleterm").setup()
 require("noice").setup({
 	lsp = {

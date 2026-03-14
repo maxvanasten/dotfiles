@@ -171,7 +171,7 @@ vim.g.fff = {
 vim.keymap.set('n', 'ff', function() require('fff').find_files() end, { desc = 'FFFind files' })
 
 vim.g.mapleader = " "
-vim.keymap.set('n', '<leader>w', ':update<CR>')
+vim.keymap.set('n', '<leader>w', ':w!<CR>')
 vim.keymap.set('n', '<leader>q', ':q<CR>')
 vim.keymap.set('n', '<leader>s', ':source<CR>')
 

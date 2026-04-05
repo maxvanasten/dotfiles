@@ -177,10 +177,6 @@ vim.keymap.set('n', '<leader>s', ':source<CR>')
 
 vim.keymap.set('n', '<leader>e', ':Explore<CR>')
 
--- Harpoon is broken right now
---vim.keymap.set('n', '<leader>a', require("harpoon.mark").add_file)
---vim.keymap.set('n', '<leader>x', require("harpoon.ui").toggle_quick_menu)
--- Buffer manager as harpoon replacement for now
 vim.keymap.set('n', '<leader>x', function() require("buffer_manager.ui").toggle_quick_menu() end)
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)

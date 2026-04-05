@@ -17,7 +17,7 @@ cds() {
   cd "$@" && ls .
 }
 
-ai_model="opencode/big-pickle"
+ai_model="opencode/kimi-k2.5"
 ai_issue_solver() {
 	prompt=$(cat ~/.prompts/repo_issues.md)
 	opencode --prompt "$prompt" -m $ai_model
@@ -42,8 +42,16 @@ ai_improve() {
 	prompt=$(cat ~/.prompts/improve.md)
 	opencode --prompt "$prompt" -m $ai_model
 }
+ai_engage() {
+	prompt=$(cat ./README.md)
+	opencode --prompt "$prompt" -m $ai_model
+}
+aikb() {
+	cd /home/max/Code/experiments/aikb
+	ai_engage
+}
 
-connect_windows() {
+connect_windows_network() {
 	folder=$@
 	mkdir -p /home/max/win/$folder
 	sudo mount -t cifs //192.168.2.7/$folder /home/max/win/$folder -o username=max,uid=1000,gid=1000,file_mode=0777,dir_mode=0777

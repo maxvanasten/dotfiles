@@ -14,6 +14,12 @@ vim.filetype.add({
 	},
 })
 
+vim.filetype.add({
+	extension = {
+		gd = 'gdscript',
+	},
+})
+
 vim.pack.add {
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
@@ -113,7 +119,7 @@ vim.lsp.config['gopls'] = {
 
 vim.diagnostic.config({ virtual_text = true })
 
-vim.lsp.enable({ 'lua_ls', 'ts_ls', 'denols', 'html', 'gopls', 'gsclsp' })
+vim.lsp.enable({ 'lua_ls', 'ts_ls', 'denols', 'html', 'gopls', 'gsclsp', 'gdscript' })
 vim.opt.completeopt = 'menu,menuone,noinsert'
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)

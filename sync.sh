@@ -21,14 +21,14 @@ echo "Copying .bashrc -> ~/.bashrc"
 cp bashrc ~/.bashrc
 
 echo "-= [HYPRLAND] =-"
-echo "Backing up ~/.config/hypr/bindings.conf -> ~/.config/hypr/bindings.conf.backup"
-mv ~/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf.backup
-echo "Copying config/hypr/bindings.conf -> ~/.config/hypr/bindings.conf"
-cp ./config/hypr/bindings.conf ~/.config/hypr/bindings.conf 
-echo "Backing up ~/.config/hypr/looknfeel.conf -> ~/.config/hypr/looknfeel.conf.backup"
-mv ~/.config/hypr/looknfeel.conf ~/.config/hypr/looknfeel.conf.backup
-echo "Copying config/hypr/looknfeel.conf -> ~/.config/hypr/looknfeel.conf"
-cp ./config/hypr/looknfeel.conf ~/.config/hypr/looknfeel.conf
+echo "Backing up ~/.config/hypr/bindings.lua -> ~/.config/hypr/bindings.lua.backup"
+mv ~/.config/hypr/bindings.lua ~/.config/hypr/bindings.lua.backup
+echo "Copying config/hypr/bindings.lua -> ~/.config/hypr/bindings.lua"
+cp ./config/hypr/bindings.lua ~/.config/hypr/bindings.lua 
+echo "Backing up ~/.config/hypr/looknfeel.lua -> ~/.config/hypr/looknfeel.lua.backup"
+mv ~/.config/hypr/looknfeel.lua ~/.config/hypr/looknfeel.lua.backup
+echo "Copying config/hypr/looknfeel.lua -> ~/.config/hypr/looknfeel.lua"
+cp ./config/hypr/looknfeel.lua ~/.config/hypr/looknfeel.lua
 hyprctl reload
 
 echo "-= [Quotes] =-"

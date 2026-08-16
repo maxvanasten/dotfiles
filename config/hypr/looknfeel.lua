@@ -17,14 +17,18 @@
 hl.config({
 	decoration = {
 --     -- Use round window corners.
---     rounding = 8,
+       rounding = 8,
 --
 --     -- Dim unfocused windows (0.0 = no dim, 1.0 = fully dimmed).
 --     dim_inactive = true,
 --     dim_strength = 0.15,
-	   active_opacity = 0.98,
-	   inactive_opacity = 0.85,
+	   active_opacity = 0.9,
+	   inactive_opacity = 0.75,
 	   fullscreen_opacity = 1,
+
+	   blur = {
+		   enabled = false,
+	   },
    },
 })
 
